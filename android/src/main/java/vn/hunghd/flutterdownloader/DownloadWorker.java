@@ -352,9 +352,9 @@ public class DownloadWorker extends Worker implements MethodChannel.MethodCallHa
                 int storage = ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
                 PendingIntent pendingIntent = null;
                 if (status == DownloadStatus.COMPLETE) {
-                    if (isImageOrVideoFile(contentType) && isExternalStoragePath(saveFilePath)) {
-                        addImageOrVideoToGallery(filename, saveFilePath, getContentTypeWithoutCharset(contentType));
-                    }
+                    //if (isImageOrVideoFile(contentType) && isExternalStoragePath(saveFilePath)) {
+                    //    addImageOrVideoToGallery(filename, saveFilePath, getContentTypeWithoutCharset(contentType));
+                    //}
 
                     if (clickToOpenDownloadedFile && storage == PackageManager.PERMISSION_GRANTED) {
                         Intent intent = IntentUtils.validatedFileIntent(getApplicationContext(), saveFilePath, contentType);
