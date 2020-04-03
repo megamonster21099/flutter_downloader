@@ -351,21 +351,21 @@ public class DownloadWorker extends Worker implements MethodChannel.MethodCallHa
                 int status = isStopped() ? (task.resumable ? DownloadStatus.PAUSED : DownloadStatus.CANCELED) : DownloadStatus.COMPLETE;
                 int storage = ContextCompat.checkSelfPermission(getApplicationContext(), android.Manifest.permission.WRITE_EXTERNAL_STORAGE);
                 PendingIntent pendingIntent = null;
-                if (status == DownloadStatus.COMPLETE) {
+                //if (status == DownloadStatus.COMPLETE) {
                     //if (isImageOrVideoFile(contentType) && isExternalStoragePath(saveFilePath)) {
                     //    addImageOrVideoToGallery(filename, saveFilePath, getContentTypeWithoutCharset(contentType));
                     //}
 
-                    if (clickToOpenDownloadedFile && storage == PackageManager.PERMISSION_GRANTED) {
-                        Intent intent = IntentUtils.validatedFileIntent(getApplicationContext(), saveFilePath, contentType);
-                        if (intent != null) {
-                            Log.d(TAG, "Setting an intent to open the file " + saveFilePath);
-                            pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
-                        } else {
-                            Log.d(TAG, "There's no application that can open the file " + saveFilePath);
-                        }
-                    }
-                }
+                    //if (clickToOpenDownloadedFile && storage == PackageManager.PERMISSION_GRANTED) {
+                        //Intent intent = IntentUtils.validatedFileIntent(getApplicationContext(), saveFilePath, contentType);
+                        //if (intent != null) {
+                            //Log.d(TAG, "Setting an intent to open the file " + saveFilePath);
+                            //pendingIntent = PendingIntent.getActivity(getApplicationContext(), 0, intent, PendingIntent.FLAG_CANCEL_CURRENT);
+                        //} else {
+                            //Log.d(TAG, "There's no application that can open the file " + saveFilePath);
+                        //}
+                    //}
+                //}
                 updateNotification(context, filename, status, progress, pendingIntent);
                 taskDao.updateTask(getId().toString(), status, progress);
 
